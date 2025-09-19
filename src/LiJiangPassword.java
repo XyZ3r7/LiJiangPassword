@@ -14,6 +14,7 @@ public class LiJiangPassword implements LiJiangPasswordI{
         repeat();
         length();
         U_LCase();
+        consecutive_diff_type();
     }
 
     /*
@@ -74,9 +75,8 @@ public class LiJiangPassword implements LiJiangPasswordI{
 
                 // If one value is repeated 3 or more times -1
                 if(temp_counts >= 3){
-                    whitelist.add(temp);
+                    whitelist.add(Character.valueOf(temp));
                     strength--;
-                    break;
                 }
 
             }
@@ -132,15 +132,17 @@ public class LiJiangPassword implements LiJiangPasswordI{
                 //for character
             if(is_Character){
                 if(!isLetter(password.charAt(i - 1))){
-                    strength ++;
-                }
-                //for special notation
-            }else if(!(isLetter(temp) && temp >= 48 && temp <= 57)){
-                if(isLetter(password.charAt(i - 1)) || (password.charAt(i - 1) >= 48 && password.charAt(i - 1) <= 57)){
+                    System.out.println("Running");
                     strength ++;
                 }
                 //for numbers
+            }else if(temp >= 48 && temp <= 57){
+                if(isLetter(password.charAt(i - 1)) || (password.charAt(i - 1) >= 48 && password.charAt(i - 1) <= 57)){
+                    strength ++;
+                }
+                //for special notations
             }else{
+                System.out.println("sldkfjsldkf");
                 if(isLetter(password.charAt(i - 1)) || (password.charAt(i - 1) >= 48 && password.charAt(i - 1) <= 57)){
                     strength ++;
                 }
