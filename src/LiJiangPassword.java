@@ -38,11 +38,11 @@ public class LiJiangPassword implements LiJiangPasswordI{
      */
     public void repeat(){
         /*
-        We just add filtered character into whitelist to prevent repetition impact to strength
+            We just add filtered character into whitelist to prevent repetition impact to strength
          */
         ArrayList <Character> whitelist = new ArrayList<Character>();
         /*
-        Current implementation is for single character
+            Current implementation is for single character
          */
         char temp;
         int temp_counts = 0;
@@ -72,6 +72,7 @@ public class LiJiangPassword implements LiJiangPasswordI{
                     temp_string = temp_string.substring(j + 1);
                 }
 
+                // If one value is repeated 3 or more times -1
                 if(temp_counts >= 3){
                     whitelist.add(temp);
                     strength--;
