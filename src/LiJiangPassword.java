@@ -63,7 +63,7 @@ public class LiJiangPassword implements LiJiangPasswordI{
                 }
 
                 if(temp_counts >= 3){
-                    whitelist.add(temp);
+                    whitelist.add(Character.valueOf(temp));
                     strength--;
                     break;
                 }
@@ -123,12 +123,12 @@ public class LiJiangPassword implements LiJiangPasswordI{
                 if(!isLetter(password.charAt(i - 1))){
                     strength ++;
                 }
-                //for special notation
-            }else if(!(isLetter(temp) && temp >= 48 && temp <= 57)){
+                //for numbers
+            }else if(temp >= 48 && temp <= 57){
                 if(isLetter(password.charAt(i - 1)) || (password.charAt(i - 1) >= 48 && password.charAt(i - 1) <= 57)){
                     strength ++;
                 }
-                //for numbers
+                //for special notations
             }else{
                 if(isLetter(password.charAt(i - 1)) || (password.charAt(i - 1) >= 48 && password.charAt(i - 1) <= 57)){
                     strength ++;
