@@ -15,16 +15,26 @@ public class LiJiangPassword implements LiJiangPasswordI{
         length();
         U_LCase();
     }
+
+    /*
+         This checks if the ASCII code of the values in the input String is +1 or -1
+         For examples:
+            abc - the ASCII code for a is 97, b is 98, c is 99. This will be -2
+     */
     public void consecutive(){
-        for(int i = 1; i < length;i++){
-            System.out.println("running");
+        // Using the for loop to go from the first value to the last value
+        for(int i = 1; i < length; i++)
+        {
+            // checks if the ASCII code is 1 number before or after
             if(password.charAt(i) == password.charAt(i - 1) + 1){
+                // If so -1 each time
                 strength--;
             }
         }
     }
+
     /*
-      This Function processed and checked if a string is repeated in password
+        This Function processed and checked if a string is repeated in password
      */
     public void repeat(){
         /*
