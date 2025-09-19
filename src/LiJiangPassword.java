@@ -75,7 +75,6 @@ public class LiJiangPassword implements LiJiangPasswordI{
                 if(temp_counts >= 3){
                     whitelist.add(Character.valueOf(temp));
                     strength--;
-                    break;
                 }
 
             }
