@@ -21,7 +21,7 @@ public class LiJiangPassword implements LiJiangPasswordI{
     /*
          This checks if the ASCII code of the values in the input String is +1 or -1
          For examples:
-            abc - the ASCII code for a is 97, b is 98, c is 99. This will be -2
+            abc - the ASCII code for 'a' is 97, 'b' is 98, 'c' is 99. This will be -2
      */
     public void consecutive(){
         // Using the for loop to go from the first value to the last value
