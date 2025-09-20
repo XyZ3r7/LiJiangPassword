@@ -15,6 +15,7 @@ public class LiJiangPassword implements LiJiangPasswordI{
         length();
         U_LCase();
         consecutive_diff_type();
+        consecutive_repeat();
     }
 
     /*
@@ -27,7 +28,7 @@ public class LiJiangPassword implements LiJiangPasswordI{
         for(int i = 1; i < length; i++)
         {
             // checks if the ASCII code is 1 number before or after
-            if(password.charAt(i) == password.charAt(i - 1) + 1){
+            if(password.charAt(i) == password.charAt(i - 1) + 1 || password.charAt(i) == password.charAt(i - 1) - 1){
                 // If so -1 each time
                 strength--;
             }
@@ -39,10 +40,6 @@ public class LiJiangPassword implements LiJiangPasswordI{
      */
     public void repeat(){
         /*
-            We just add filtered character into whitelist to prevent repetition impact to strength
-         */
-        ArrayList <Character> whitelist = new ArrayList<Character>();
-        /*
             Current implementation is for single character
          */
         char temp;
@@ -53,33 +50,19 @@ public class LiJiangPassword implements LiJiangPasswordI{
             temp = password.charAt(i);
             temp_counts = 0;
             temp_string = password.substring(i + 1);
-            is_WhiteList = false;
 
-            for(int j = 0; j < temp_string.length(); j++){
-                for(int k = 0; k < whitelist.size();k++){
-                    if(temp == whitelist.get(k)){
-                        //get rid of this loop
-                        is_WhiteList = true;
-                        break;
-                    }
-                }
-
-                if(is_WhiteList){
-                    break;
-                }
-
-                if(temp_string.indexOf(temp) != -1){
+            for(int j = 0; j < temp_string.length(); j++) {
+                if(temp_string.charAt(j) == temp){
                     temp_counts++;
-                    temp_string = temp_string.substring(j + 1);
                 }
+            }
 
                 // If one value is repeated 3 or more times -1
-                if(temp_counts >= 3){
-                    whitelist.add(Character.valueOf(temp));
+                if(temp_counts >= 2){
                     strength--;
                 }
 
-            }
+
         }
     }
 
@@ -116,10 +99,13 @@ public class LiJiangPassword implements LiJiangPasswordI{
             }
         }
 
-        /*
-        Add lower value to strength
-         */
-        strength += Math.min(Upper_Case, Lower_Case);
+
+        //Add lower value to strength
+        int offset = Math.min(Upper_Case, Lower_Case);
+        if (offset == 0){
+            throw new NumberFormatException("You need to add a Uppercase or lowercase");
+        }
+        strength += offset;
 
     }
 
@@ -132,19 +118,19 @@ public class LiJiangPassword implements LiJiangPasswordI{
                 //for character
             if(is_Character){
                 if(!isLetter(password.charAt(i - 1))){
-                    System.out.println("Running");
                     strength ++;
                 }
                 //for numbers
             }else if(temp >= 48 && temp <= 57){
-                if(isLetter(password.charAt(i - 1)) || (password.charAt(i - 1) >= 48 && password.charAt(i - 1) <= 57)){
+                if(!(password.charAt(i - 1) >= 48 && password.charAt(i - 1) <= 57)){
                     strength ++;
+
                 }
                 //for special notations
             }else{
-                System.out.println("sldkfjsldkf");
                 if(isLetter(password.charAt(i - 1)) || (password.charAt(i - 1) >= 48 && password.charAt(i - 1) <= 57)){
                     strength ++;
+
                 }
             }
 
@@ -154,6 +140,25 @@ public class LiJiangPassword implements LiJiangPasswordI{
         }
     }
 
+    /*
+    This function check if there's consecutive indexes that contain the same char(more than 3)
+     */
+    public void consecutive_repeat(){
+        char current;
+        int checker = 0;
+        for(int i = 0; i < password.length() - 2;i++){
+            current = password.charAt(i);
+            checker = 0;
+            for(int j = 0; j < 3; j++){
+                if(current == password.charAt(i + j)){
+                    checker++;
+                }
+            }
+            if(checker == 3){
+                strength--;
+            }
+        }
+    }
     /*
     Getter for passwordStrength
      */
