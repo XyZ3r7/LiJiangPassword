@@ -16,6 +16,26 @@ public class LiJiangPassword implements LiJiangPasswordI{
         U_LCase();
         consecutive_diff_type();
         consecutive_repeat();
+        PasswordFormatException();
+    }
+
+    public void PasswordFormatException()
+    {
+        boolean letter = false, number = false, symbol = false;
+        for(int i = 0; i < length; i++)
+        {
+            if(isLetter(password.charAt(i)))
+                letter = true;
+            if(password.charAt(i) >= 48 && password.charAt(i) <= 57)
+                number = true;
+            if(!(isLetter(password.charAt(i))) && password.charAt(i) >= 48 && password.charAt(i) <= 57)
+                symbol = true;
+        }
+
+        if(letter && number && symbol)
+            System.out.println("String all good!");
+        else
+            System.out.println("Wrong Password!");
     }
 
     /*

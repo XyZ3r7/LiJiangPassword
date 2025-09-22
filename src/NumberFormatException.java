@@ -8,4 +8,9 @@ public class NumberFormatException extends RuntimeException{
     public void Explanation(){
         System.out.println(explanation);
     }
+
+    public void PasswordFormatException(String explanation)
+    {
+        System.out.println("All good");
+    }
 }
