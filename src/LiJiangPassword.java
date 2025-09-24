@@ -32,12 +32,12 @@ public class LiJiangPassword implements LiJiangPasswordI {
         if (letter && number && symbol)
             System.out.println("String all good!");
         else
-            System.out.println("Wrong Password!");
+            throw new NumberFormatException("Your password is too weak, password should at least have one Uppercase, one lower case and one special notation.");
     }
 
     /*
-         This checks if the ASCII code of the values in the input String is +1 or -1
-         For examples:
+        This checks if the ASCII code of the values in the input String is +1 or -1
+        For examples:
             abc - the ASCII code for 'a' is 97, 'b' is 98, 'c' is 99. This will be -2
      */
     public void consecutive() {
@@ -77,14 +77,12 @@ public class LiJiangPassword implements LiJiangPasswordI {
             if (temp_counts >= 2) {
                 strength--;
             }
-
-
         }
     }
 
     /*
-      This Function checked if the length is in the range of 8 - 20, and add score based on length
-      If it is not in the range, we just throw an exception.
+        This Function checked if the length is in the range of 8 - 20, and add score based on length
+        If it is not in the range, we just throw an exception.
      */
     public void length() {
         if (length >= 17 && length <= 20) {
@@ -99,7 +97,7 @@ public class LiJiangPassword implements LiJiangPasswordI {
     }
 
     /*
-    This function checked if there's LowerCase and
+        This function checked if there's LowerCase and
      */
     public void U_LCase() {
         int Upper_Case = 0;
@@ -114,7 +112,6 @@ public class LiJiangPassword implements LiJiangPasswordI {
                 Lower_Case++;
             }
         }
-
 
         //Add lower value to strength
         int offset = Math.min(Upper_Case, Lower_Case);
@@ -136,26 +133,24 @@ public class LiJiangPassword implements LiJiangPasswordI {
                 if (!isLetter(password.charAt(i - 1))) {
                     strength++;
                 }
-                //for numbers
+            //for numbers
             } else if (temp >= 48 && temp <= 57) {
                 if (!(password.charAt(i - 1) >= 48 && password.charAt(i - 1) <= 57)) {
                     strength++;
 
                 }
-                //for special notations
+            //for special notations
             } else {
                 if (isLetter(password.charAt(i - 1)) || (password.charAt(i - 1) >= 48 && password.charAt(i - 1) <= 57)) {
                     strength++;
 
                 }
             }
-
-
         }
     }
 
     /*
-    This function check if there's consecutive indexes that contain the same char(more than 3)
+        This function check if there's consecutive indexes that contain the same char(more than 3)
      */
     public void consecutive_repeat() {
         char current;
@@ -175,7 +170,7 @@ public class LiJiangPassword implements LiJiangPasswordI {
     }
 
     /*
-    Getter for passwordStrength
+        Getter for passwordStrength
      */
     public int getStrength() {
         return strength;
