@@ -1,8 +1,8 @@
 import static java.lang.Character.*;
 
 public class LiJiangPassword implements LiJiangPasswordInterface{
-    private String password;
-    private int length;
+    private final String password;
+    private final int length;
 
     public LiJiangPassword(String password){
         this.password = password;
@@ -62,9 +62,9 @@ public class LiJiangPassword implements LiJiangPasswordInterface{
     @Override
     public int differentConsecutiveTypes() {
         int strength = 0;
-        boolean digit = false;
-        boolean symbol = false;
-        boolean character = false;
+        boolean digit;
+        boolean symbol;
+        boolean character;
         char previous;
         for (int i = 1; i < length; i++) {
             digit = isDigit(password.charAt(i));
@@ -72,11 +72,11 @@ public class LiJiangPassword implements LiJiangPasswordInterface{
             symbol = !digit && !character;
 
             previous = password.charAt(i - 1);
-            if(digit && isDigit(previous)){
+            if(digit && !isDigit(previous)){
                 strength ++;
-            }else if (character && isLetter(previous)){
+            }else if (character && !isLetter(previous)){
                 strength ++;
-            }else if (symbol && !isDigit(previous) && !isLetter(previous)){
+            }else if (symbol && (isDigit(previous) || isLetter(previous))){
                 strength ++;
             }
         }
