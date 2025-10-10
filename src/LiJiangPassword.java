@@ -16,7 +16,7 @@ public class LiJiangPassword implements LiJiangPasswordInterface{
 
     // Yang - determineStrength()
     /*
-       determineStrength() checks if there is at least a uppercase, lowercase, letter,
+       determineStrength() checks if there is at least an uppercase, lowercase, letter,
        number, and a symbol, the password MUST be between 8 - 20 inclusively.
 
        first declare and set the 4 variable to false, then go through the password that,
@@ -60,7 +60,7 @@ public class LiJiangPassword implements LiJiangPasswordInterface{
     // Linpei - length()
     /*
         First taking the length of the password that the user inputted,
-        make a int variable strength to store the strength and at the end to return.
+        make an int variable strength to store the strength and at the end to return.
 
         checks if the password is 8 - 11 inclusive, if so strength = 1
         checks if the password is 12 - 16 inclusive, then strength = 2
@@ -166,7 +166,7 @@ public class LiJiangPassword implements LiJiangPasswordInterface{
 
     // Yang - consecutiveOrders()
     /*
-        this helper method is gonna use the ascii code. First create all the variables,
+        this helper method is going to use the ascii code. First create all the variables,
         then in the for loop it will start at index 1, which is the second character.
         set the current character to the char at position i, previous character is the
         char one index before index i.
@@ -200,8 +200,6 @@ public class LiJiangPassword implements LiJiangPasswordInterface{
     @Override
     public int extraOccurrence() {
         int strength = 0;
-        char current;
-        int count;
         int[] frequency = new int[ASCII_MAX_VALUE + 1];
         for(int i = 0; i < length; i++){
             frequency[password.charAt(i)] += 1;
@@ -220,7 +218,7 @@ public class LiJiangPassword implements LiJiangPasswordInterface{
     /*
         in this helper method, it will lose strength if the character repeats 3 or more times.
         in the for loop the index starts at the first character and goes 2 characters before the end,
-        if the current password is the same to the next and the next next, then -1 strength.
+        if the current password is the same to the next and the next, then -1 strength.
     */
     @Override
     public int consecutiveSameChar() {
