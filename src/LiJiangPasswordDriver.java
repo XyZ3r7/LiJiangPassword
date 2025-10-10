@@ -63,6 +63,5 @@ public class LiJiangPasswordDriver {
 //        LiJiangPassword testForPasswordTwelve = new LiJiangPassword("Password1"); // PasswordFormatException
 //        LiJiangPassword testForPasswordThirteen = new LiJiangPassword("password1&"); // PasswordFormatException
 //        LiJiangPassword testForPasswordFourteen = new LiJiangPassword("Password&"); // PasswordFormatException
-
     }
 }

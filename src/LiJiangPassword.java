@@ -4,6 +4,7 @@ public class LiJiangPassword implements LiJiangPasswordInterface{
     private final String password;
     private final int length;
 
+
     public LiJiangPassword(String password){
         this.password = password;
         length = password.length();
@@ -192,30 +193,23 @@ public class LiJiangPassword implements LiJiangPasswordInterface{
 
     // Yang - extraOccurrence()
     /*
-        this helper method checks if there are more than 2 characters that is in order.
-        declare all the variables needed and in the first for loop it is going to loop through every
-        character in the password, setting the current to the character at position i, then have the cound as 0,
-        in the second for loop it is going to loop from the index i to the end. If the current is equal to the
-        character in position j, +1 on the count. Looping through the whole password, if the count is equal to
-        the number 3 then -1 strength.
-
+        *Reimplemented due to poor readability and efficiency
+        Using frequency array to quickly find out repeated character/digit/symbol and save the repeated times as value.
+        Then, loop again to check if there's any character/digit/symbol repeated more than twice.
     */
     @Override
     public int extraOccurrence() {
         int strength = 0;
         char current;
         int count;
-        for (int i = 0; i < length; i++) {
-            current = password.charAt(i);
-            count = 0;
-            for (int j = i; j < length; j++) {
-                if (current == password.charAt(j)){
-                    count++;
-                }
-                if(count == 3){
-                    strength--;
-                    break;
-                }
+        int[] frequency = new int[ASCII_MAX_VALUE + 1];
+        for(int i = 0; i < length; i++){
+            frequency[password.charAt(i)] += 1;
+        }
+
+        for (int i = 0; i < ASCII_MAX_VALUE + 1; i++) {
+            if (frequency[i] >= 3){
+                strength -= frequency[i] - 2;
             }
         }
 
