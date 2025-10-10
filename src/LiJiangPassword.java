@@ -8,10 +8,6 @@ public class LiJiangPassword implements LiJiangPasswordInterface{
     public LiJiangPassword(String password){
         this.password = password;
         length = password.length();
-
-        // Testing purpose only
-        // determineStrength();
-        // System.out.println(length() + differentConsecutiveTypes() + upperAndLowerCase() + consecutiveOrders() + extraOccurrence() + consecutiveSameChar());
     }
 
     // Yang - determineStrength()
