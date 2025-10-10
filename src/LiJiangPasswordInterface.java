@@ -1,4 +1,6 @@
 public interface LiJiangPasswordInterface {
+    // Yang Li, Linpei Jiang
+
     public int MINIMUM_LENGTH = 8;
     public int MAXIMUM_LENGTH = 20;
 
