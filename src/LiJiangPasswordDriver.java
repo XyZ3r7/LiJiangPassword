@@ -47,21 +47,48 @@ public class LiJiangPasswordDriver {
          System.out.println("Method 7 test: " + testForMethod7TestOne.consecutiveSameChar());
          System.out.println("Method 7 test: " + testForMethod7TestTwo.consecutiveSameChar());
 
-        // Test for the whole password
-//        LiJiangPassword testForPasswordOne = new LiJiangPassword("Abcde123@"); // Strength = -1
-//        LiJiangPassword testForPasswordTwo = new LiJiangPassword("Password1&"); // Strength = 4
-//        LiJiangPassword testForPasswordThree = new LiJiangPassword("Apple92&"); // Strength = 4
-//        LiJiangPassword testForPasswordFour = new LiJiangPassword("Apple98&"); // Strength = 3
-//        LiJiangPassword testForPasswordFive = new LiJiangPassword("banaNa12&"); // Strength = 1
-//        LiJiangPassword testForPasswordSix = new LiJiangPassword("@Cheese1!a@cc"); // Strength = 8
-//        LiJiangPassword testForPasswordSeven = new LiJiangPassword("@Cheese1!a@ccc"); // Strength = 6
-//        LiJiangPassword testForPasswordEight = new LiJiangPassword("@Cheeese1!a@ccc"); // Strength = 4
-//        LiJiangPassword testForPasswordNine = new LiJiangPassword("@CheESe1!a@cc"); // Strength = 11
+        // Test for the whole password - Linpei and Yang
+        LiJiangPassword testForPasswordOne = new LiJiangPassword("Abcde123@"); // Strength = -1
+        System.out.println("Strength for test 1 is: " + testForPasswordOne.determineStrength());
 
-//        LiJiangPassword testForPasswordTen = new LiJiangPassword("hello"); // PasswordFormatException
-//        LiJiangPassword testForPasswordEleven = new LiJiangPassword("abcdefghijk1234987896876!@#!%@!# "); // PasswordFormatException
-//        LiJiangPassword testForPasswordTwelve = new LiJiangPassword("Password1"); // PasswordFormatException
-//        LiJiangPassword testForPasswordThirteen = new LiJiangPassword("password1&"); // PasswordFormatException
-//        LiJiangPassword testForPasswordFourteen = new LiJiangPassword("Password&"); // PasswordFormatException
+        LiJiangPassword testForPasswordTwo = new LiJiangPassword("Password1&"); // Strength = 4
+        System.out.println("Strength for test 2 is: " + testForPasswordTwo.determineStrength());
+
+        LiJiangPassword testForPasswordThree = new LiJiangPassword("Apple92&"); // Strength = 4
+        System.out.println("Strength for test 3 is: " + testForPasswordThree.determineStrength());
+
+        LiJiangPassword testForPasswordFour = new LiJiangPassword("Apple98&"); // Strength = 3
+        System.out.println("Strength for test 4 is: " + testForPasswordFour.determineStrength());
+
+        LiJiangPassword testForPasswordFive = new LiJiangPassword("banaNa12&"); // Strength = 1
+        System.out.println("Strength for test 5 is: " + testForPasswordFive.determineStrength());
+
+        LiJiangPassword testForPasswordSix = new LiJiangPassword("@Cheese1!a@cc"); // Strength = 8
+        System.out.println("Strength for test 6 is: " + testForPasswordSix.determineStrength());
+
+        LiJiangPassword testForPasswordSeven = new LiJiangPassword("@Cheese1!a@ccc"); // Strength = 6
+        System.out.println("Strength for test 7 is: " + testForPasswordSeven.determineStrength());
+
+        LiJiangPassword testForPasswordEight = new LiJiangPassword("@Cheeese1!a@ccc"); // Strength = 4
+        System.out.println("Strength for test 8 is: " + testForPasswordEight.determineStrength());
+
+        LiJiangPassword testForPasswordNine = new LiJiangPassword("@CheESe1!a@cc"); // Strength = 11
+        System.out.println("Strength for test 9 is: " + testForPasswordNine.determineStrength());
+
+        LiJiangPassword testForPasswordTen = new LiJiangPassword("hello"); // PasswordFormatException
+        System.out.println("Strength for test 10 is: " + testForPasswordTen.determineStrength());
+
+        LiJiangPassword testForPasswordEleven = new LiJiangPassword("abcdefghijk1234987896876!@#!%@!# "); // PasswordFormatException
+        System.out.println("Strength for test 11 is: " + testForPasswordEleven.determineStrength());
+
+        LiJiangPassword testForPasswordTwelve = new LiJiangPassword("Password1"); // PasswordFormatException
+        System.out.println("Strength for test 12 is: " + testForPasswordTwelve.determineStrength());
+
+        LiJiangPassword testForPasswordThirteen = new LiJiangPassword("password1&"); // PasswordFormatException
+        System.out.println("Strength for test 13 is: " + testForPasswordThirteen.determineStrength());
+
+        LiJiangPassword testForPasswordFourteen = new LiJiangPassword("Password&"); // PasswordFormatException
+        System.out.println("Strength for test 14 is: " + testForPasswordFourteen.determineStrength());
+
     }
 }
