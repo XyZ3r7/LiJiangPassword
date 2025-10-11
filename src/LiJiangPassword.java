@@ -109,7 +109,9 @@ public class LiJiangPassword implements LiJiangPasswordInterface{
                 strength ++;
             }else if (character && !isLetter(previous)){
                 strength ++;
-            }else if (symbol && (isDigit(previous) || isLetter(previous))){
+            }else if (symbol &&
+                    (isDigit(previous) || isLetter(previous))
+            ){
                 strength ++;
             }
         }
